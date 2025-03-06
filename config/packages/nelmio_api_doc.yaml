@@ -1,0 +1,108 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Лаборатория интернет
+            description: Демонстрация API для компании "Лаборатория интернет"
+            version: 1.0.0
+        components:
+            schemas:
+                login:
+                    description: login
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                            example: true
+                        token:
+                            type: string
+                            example: "eyJ0eXAiOi..."
+                successUser:
+                    description: success
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                            example: true
+                        data:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                    example: 1
+                                email:
+                                    type: string
+                                    example: "John@gmail.com"
+                                firstname:
+                                    type: string
+                                    example: "John"
+                                lastname:
+                                    type: string
+                                    example: "Doe"
+                successUserList:
+                    description: success
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                            example: true
+                        data:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    id:
+                                        type: integer
+                                        example: 1
+                                    email:
+                                        type: string
+                                        example: "John@gmail.com"
+                successUserDelete:
+                    description: success
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                            example: true
+                error:
+                    description: error
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                            example: false
+                        message:
+                            type: string
+                            example: bad credentials
+                validationFailed:
+                    description: validation failed
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                            example: false
+                        message:
+                            type: string
+                            example: validation failed
+                        errors:
+                            type: object
+                            example: {"email": "This value should not be blank."}
+                notFound:
+                    description: not found
+                    type: object
+                    properties:
+                        success:
+                            type: boolean
+                            example: false
+                        message:
+                            type: string
+                            example: user not found
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+            - Bearer: [ ]
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc
