@@ -8,8 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class UserDto
 {
-    #[Assert\Email]
     #[Assert\NotBlank]
+    #[Assert\Email]
     #[Property(
         description: 'Электронная почта',
         type: 'string',
@@ -18,7 +18,7 @@ class UserDto
     public string $email;
 
     #[Assert\Length(min: 8)]
-    #[Assert\NotBlank(groups: ['create'])]
+    #[Assert\NotBlank]
     #[Property(
         description: 'Пароль',
         type: 'string',
@@ -27,7 +27,7 @@ class UserDto
     #[Groups(['create', 'update', 'login'])]
     public string $password;
 
-    #[Assert\NotBlank(groups: ['create'])]
+    #[Assert\NotBlank]
     #[Property(
         description: 'Имя',
         type: 'string',
@@ -36,7 +36,7 @@ class UserDto
     #[Groups(['create', 'update', 'show'])]
     public string $firstname;
 
-    #[Assert\NotBlank(groups: ['create'])]
+    #[Assert\NotBlank]
     #[Property(
         description: 'Фамилия',
         type: 'string',

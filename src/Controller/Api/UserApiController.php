@@ -108,7 +108,7 @@ final class UserApiController extends AbstractController
         $this->checkAccess($user);
         $user->updateFromDto($userDto);
 
-        if ($userDto->password) {
+        if (isset($userDto->password)) {
             $user->setPassword($passwordHasher->hashPassword($user, $userDto->password));
         }
 
