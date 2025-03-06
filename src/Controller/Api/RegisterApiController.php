@@ -35,7 +35,7 @@ class RegisterApiController extends AbstractController
         content: new JsonContent(ref: '#/components/schemas/validationFailed')
     )]
     public function register(
-        #[MapRequestPayload(serializationContext: ['groups'=>['update']])] UserDto $userDto,
+        #[MapRequestPayload(validationGroups: ['create'])] UserDto $userDto,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $hasher,
         JWTTokenManagerInterface $jwtManager

@@ -99,7 +99,7 @@ final class UserApiController extends AbstractController
         content: new JsonContent(ref: '#/components/schemas/notFound')
     )]
     public function edit(
-        #[MapRequestPayload(serializationContext: ['groups'=>['update']])] UserDto $userDto,
+        #[MapRequestPayload] UserDto $userDto,
         User $user,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher
